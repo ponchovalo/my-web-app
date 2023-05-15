@@ -12,8 +12,12 @@ export class UsuarioComponent {
   usuario = ''
 
   onAgregarUsuario(){
-    this.usuarios.push(this.usuario)
-    this.usuario = '';
+    if(this.usuario === ""){
+      return
+    }else{
+      this.usuarios.push(this.usuario)
+      this.usuario = '';
+      console.log(this.usuarios)
+    }
   }
-
 }

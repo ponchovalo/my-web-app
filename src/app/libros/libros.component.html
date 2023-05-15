@@ -1,0 +1,4 @@
+<input type="text" [(ngModel)]="libroNvo">
+<button (click)="onAgregarLibro()">Agregar</button>
+
+<app-libro (eliminarLibro)="elimLibro(libro)" *ngFor="let libro of libros" [tituloLibro]="libro"></app-libro>
