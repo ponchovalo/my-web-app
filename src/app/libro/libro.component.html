@@ -1,7 +1,8 @@
-<div>
-
+<div class="libro">
+    <!-- Variable que se toma desde el componente padre en este caso Libros, creada con un Input en el componente hijo -->
     <h1>{{tituloLibro}}</h1>
-    <button *ngIf="tituloLibro" (click)="onClicked()">Eliminar</button>
+    <!-- El boton manda a llamar el metodo que emite hacia el padre -->
+    <button (click)="onClicked()">Eliminar</button>
 
 </div>
 

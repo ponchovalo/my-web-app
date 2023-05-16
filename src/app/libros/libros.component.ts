@@ -10,7 +10,7 @@ export class LibrosComponent{
 
     libroNvo = '';
 
-    libros = [''];
+    libros: string[] = [];
 
     onAgregarLibro(){
         this.libros.push(this.libroNvo);
