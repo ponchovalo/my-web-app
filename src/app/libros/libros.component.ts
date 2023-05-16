@@ -17,8 +17,10 @@ export class LibrosComponent{
     guardarLibro(f:any){
         if(f.valid){
             this.libros.push(f.value.nombreLibro)
+            f.reset();
         }else{
             console.log('no escribiste nada')
+            f.reset();
         }
     }
 
