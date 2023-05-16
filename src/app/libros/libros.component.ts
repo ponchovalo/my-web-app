@@ -7,14 +7,19 @@ import { Component } from "@angular/core";
 
 export class LibrosComponent{
 
-
-    libroNvo = '';
-
     libros: string[] = [];
 
-    onAgregarLibro(){
-        this.libros.push(this.libroNvo);
-        this.libroNvo = '';
+    // onAgregarLibro(){
+    //     this.libros.push(this.libroNvo);
+    //     this.libroNvo = '';
+    // }
+
+    guardarLibro(f:any){
+        if(f.valid){
+            this.libros.push(f.value.nombreLibro)
+        }else{
+            console.log('no escribiste nada')
+        }
     }
 
     elimLibro(libro:string){
