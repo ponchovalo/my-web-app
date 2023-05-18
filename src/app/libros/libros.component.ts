@@ -1,31 +1,43 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { LibrosService } from "../services/libros.service";
+import { Subscription } from "rxjs";
 
 @Component({
     selector:'app-libros',
     templateUrl:'./libros.component.html'
 })
 
-export class LibrosComponent{
+export class LibrosComponent implements OnInit, OnDestroy{
 
-    libros: string[] = [];
+  libros:any = [];
+  //Agregamos el servicio en el contructor
+  //En el constructor no se debe incluir manejo de DATA
+  constructor(private libroService: LibrosService){}
+  private libroSubscription: Subscription = new Subscription;
 
-    // onAgregarLibro(){
-    //     this.libros.push(this.libroNvo);
-    //     this.libroNvo = '';
-    // }
+  ngOnInit(){
+    this.libros = this.libroService.obtenerLibros();
+    this.libroSubscription = this.libroService.librosSubject.subscribe( () => {
+      this.libros = this.libroService.obtenerLibros();
+    })
+  }
 
-    guardarLibro(f:any){
-        if(f.valid){
-            this.libros.push(f.value.nombreLibro)
-            f.reset();
-        }else{
-            console.log('no escribiste nada')
-            f.reset();
-        }
-    }
+  ngOnDestroy(): void {
+    this.libroSubscription.unsubscribe();
+  }
 
-    elimLibro(libro:string){
-        this.libros = this.libros.filter(p => p !== libro)
-    }
+  guardarLibro(f:any){
+      if(f.valid){
+          this.libroService.agregarLibro(f.value.nombreLibro);
+          f.reset();
+      }else{
+          console.log('no escribiste nada')
+          f.reset();
+      }
+  }
+
+  elimLibro(libro:string){
+
+  }
 
 }
