@@ -1,9 +1,12 @@
 <mat-sidenav-container>
   <mat-sidenav #menu role="navigation">
-    <p>Elemento sidenav</p>
+    <app-menu-lista (menuToggle)="menu.toggle()"></app-menu-lista>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button (click)="menu.toggle()">Abrir</button>
-    <router-outlet></router-outlet>
+    <app-barra (menuToggle)="menu.toggle()"></app-barra>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -16,6 +16,12 @@ import { RegistrarComponent } from './seguridad/registrar/registrar.component';
 import { LoginComponent } from './seguridad/login/login.component';
 import { InicioComponent } from './inicio.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BarraComponent } from './navegacion/barra/barra.component';
+import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
+import { SeguridadService } from './seguridad/seguridad.service';
+import { BooksComponent } from './books/books.component';
+import { BooksService } from './books/books.service';
+import {BookNuevoComponent} from './books/book-nuevo.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +31,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     LibrosComponent,
     RegistrarComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    BarraComponent,
+    MenuListaComponent,
+    BooksComponent,
+    BookNuevoComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [LibrosService],
+  providers: [LibrosService, SeguridadService, BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

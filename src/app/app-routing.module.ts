@@ -4,17 +4,21 @@ import { InicioComponent } from './inicio.component';
 import { LibrosComponent } from './libros/libros.component';
 import { RegistrarComponent } from './seguridad/registrar/registrar.component';
 import { LoginComponent } from './seguridad/login/login.component';
+import { SeguridadRouter } from './seguridad/seguridad.router';
+import { BooksComponent } from './books/books.component';
 
 const routes: Routes = [
-  { path :'', component: InicioComponent},
+  { path :'', component: InicioComponent, canActivate: [SeguridadRouter]},
   { path :'libros', component: LibrosComponent},
   { path :'registrar', component: RegistrarComponent},
-  { path :'login', component: LoginComponent}
+  { path :'login', component: LoginComponent},
+  { path :'books', component: BooksComponent}
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [SeguridadRouter]
 })
 export class AppRoutingModule { }
