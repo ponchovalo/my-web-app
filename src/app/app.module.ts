@@ -26,6 +26,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AutoresComponent } from './autores/autores.component';
 import { AutoresService } from './autores/autores.service';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +49,8 @@ import { AutoresService } from './autores/autores.service';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [LibrosService, SeguridadService, BooksService, AutoresService,{provide: MAT_DATE_LOCALE, useValue:'es-ES'}],
   bootstrap: [AppComponent]
